@@ -37,6 +37,9 @@ public class InventoryEntity {
     @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
     Integer bookedCount;
 
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    Integer reservedCount;
+
     @Column(nullable = false)
     Integer totalCount;
 

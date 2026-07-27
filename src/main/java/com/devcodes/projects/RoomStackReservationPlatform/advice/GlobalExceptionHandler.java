@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-@RestControllerAdvice
+//@RestControllerAdvice
 public class GlobalExceptionHandler {
     
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
@@ -68,6 +68,16 @@ public class GlobalExceptionHandler {
         return buildErrorResponseEntity(apiError);
     }
 
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ApiResponse<?>> handleIllegalState(IllegalStateException exception) {
+        logger.warn("Illegal state: {}", exception.getMessage());
+        ApiError apiError = ApiError.builder()
+                .status(HttpStatus.CONFLICT)
+                .message(exception.getMessage())
+                .build();
+        return buildErrorResponseEntity(apiError);
+    }
+
     /**
      * Handles IllegalArgumentException - when invalid arguments are passed
      */
@@ -111,7 +121,7 @@ public class GlobalExceptionHandler {
      * Handles all other unhandled exceptions
      * This should be the last handler as it catches all exceptions
      */
-    @ExceptionHandler(Exception.class)
+//    @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<?>> handleInternalServerError(Exception exception) {
         logger.error("Unexpected error occurred", exception);
         ApiError apiError = ApiError.builder()

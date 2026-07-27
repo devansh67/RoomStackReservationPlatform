@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -17,6 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "booking")
 public class BookingEntity {
     @Id
@@ -44,16 +46,15 @@ public class BookingEntity {
     @Column(nullable = false)
     LocalDate checkOutDate;
 
+    @Column(nullable = false)
+    BigDecimal amount;
+
     @CreationTimestamp
     @Column(updatable = false)
     LocalDateTime createdAt;
 
     @UpdateTimestamp
     LocalDateTime updatedAt;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "payment_id")
-    PaymentEntity payment;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

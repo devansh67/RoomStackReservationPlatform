@@ -4,8 +4,12 @@ import com.devcodes.projects.RoomStackReservationPlatform.entity.enums.PaymentSt
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -28,4 +32,13 @@ public class PaymentEntity {
 
     @Column(nullable = false, precision = 10, scale = 2)
     BigDecimal amount;
+
+    @CreationTimestamp
+    LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    LocalDateTime updatedAt;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    BookingEntity booking;
 }
