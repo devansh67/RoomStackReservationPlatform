@@ -1,6 +1,7 @@
 package com.devcodes.projects.RoomStackReservationPlatform.entity;
 
 import com.devcodes.projects.RoomStackReservationPlatform.entity.Helper.HotelContactInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -47,6 +48,7 @@ public class HotelEntity {
     Boolean isActive;
 
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
+    @JsonIgnore
     List<RoomEntity> rooms;
 
     @ManyToOne

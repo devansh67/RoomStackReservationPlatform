@@ -2,6 +2,7 @@ package com.devcodes.projects.RoomStackReservationPlatform.controller;
 
 import com.devcodes.projects.RoomStackReservationPlatform.dto.HotelDto;
 import com.devcodes.projects.RoomStackReservationPlatform.dto.HotelInfoDto;
+import com.devcodes.projects.RoomStackReservationPlatform.dto.HotelPriceDto;
 import com.devcodes.projects.RoomStackReservationPlatform.dto.HotelSearchRequest;
 import com.devcodes.projects.RoomStackReservationPlatform.service.HotelService;
 import com.devcodes.projects.RoomStackReservationPlatform.service.InventoryService;
@@ -19,8 +20,8 @@ public class HotelBrowseController {
     private final HotelService hotelService;
 
     @PostMapping("/search")
-    public ResponseEntity<Page<HotelDto>> searchHotels(@RequestBody HotelSearchRequest hotelSearchRequest) {
-        Page<HotelDto> page = inventoryService.searchHotels(hotelSearchRequest);
+    public ResponseEntity<Page<HotelPriceDto>> searchHotels(@RequestBody HotelSearchRequest hotelSearchRequest) {
+        Page<HotelPriceDto> page = inventoryService.searchHotels(hotelSearchRequest);
         return ResponseEntity.ok(page);
     }
 

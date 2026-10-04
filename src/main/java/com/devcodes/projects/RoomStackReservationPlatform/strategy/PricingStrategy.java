@@ -1,4 +1,10 @@
 package com.devcodes.projects.RoomStackReservationPlatform.strategy;
 
-public class PricingStrategy {
+import com.devcodes.projects.RoomStackReservationPlatform.entity.InventoryEntity;
+
+import java.math.BigDecimal;
+
+public interface PricingStrategy {
+
+    BigDecimal calculatePrice(InventoryEntity inventory);
 }

@@ -47,7 +47,7 @@ public class InventoryEntity {
     BigDecimal surgeFactor;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    BigDecimal price; // basePrice * surgeFactor
+    BigDecimal price;
 
     @Column(nullable = false)
     String city;

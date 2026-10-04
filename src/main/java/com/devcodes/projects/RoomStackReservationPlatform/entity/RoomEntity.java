@@ -1,5 +1,6 @@
 package com.devcodes.projects.RoomStackReservationPlatform.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -23,6 +24,7 @@ public class RoomEntity {
 
     @ManyToOne
     @JoinColumn(name = "hotel_id", nullable = false)
+    @JsonIgnore
     HotelEntity hotel;
 
     @Column(nullable = false)
